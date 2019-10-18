@@ -1,9 +1,57 @@
 {
-  "name": "web-wdio-e2e-adapter",
-  "version": "1.0.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cybernated/web-wdio-e2e-adapter.git"
-  },
-  "license": "-"
+    "name": "@arrival/web-wdio-e2e-kit",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cybernated/web-wdio-e2e-kit.git"
+    },
+    "license": "MIT",
+    "scripts": {
+        "build:package": "yarn compile && yarn copy:assets",
+        "compile": "tsc",
+        "copy:assets": "node ./dev/scripts/copy-assets.js",
+        "lint:code": "eslint --ext .js,.ts",
+        "lint:fix": "yarn lint:code --fix",
+        "lint:markdown": "node ./node_modules/@eigenspace/codestyle/scripts/markdown-lint.js",
+        "lint": "yarn lint:code . && yarn lint:markdown",
+        "hooks:pre-push": "yarn lint",
+        "deploy:publish": "node node_modules/@eigenspace/helper-scripts/scripts/ci/publish.js",
+        "script:update-deps-remote": "npx -p @eigenspace/helper-scripts update-deps"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "yarn hooks:pre-push",
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "yarn lint:fix",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "@arrival/web-e2e-spec-creator": "1.0.0-feature-cf-1077-get-project-out-of-e2e-spec-creator",
+        "@eigenspace/argument-parser": "1.0.4",
+        "@wdio/cli": "5.14.5",
+        "@wdio/local-runner": "5.14.5",
+        "@wdio/mocha-framework": "5.14.4",
+        "@wdio/spec-reporter": "5.14.5",
+        "@wdio/sync": "5.14.4",
+        "chromedriver": "77.0.0",
+        "expect": "24.9.0",
+        "ts-node": "8.4.1",
+        "tsconfig-paths": "3.9.0",
+        "wdio-chromedriver-service": "5.0.2",
+        "wdio-image-comparison-service": "1.6.0"
+    },
+    "devDependencies": {
+        "@eigenspace/codestyle": "1.1.67",
+        "@eigenspace/helper-scripts": "1.0.79",
+        "eslint": "5.16.0",
+        "eslint-plugin-eigenspace-script": "0.0.18",
+        "husky": "2.3.0",
+        "lint-staged": "8.1.7",
+        "typescript": "3.5.3"
+    }
 }
