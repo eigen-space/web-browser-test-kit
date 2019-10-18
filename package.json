@@ -1,0 +1,9 @@
+{
+  "name": "web-wdio-e2e-adapter",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cybernated/web-wdio-e2e-adapter.git"
+  },
+  "license": "-"
+}
