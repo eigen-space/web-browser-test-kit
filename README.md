@@ -29,11 +29,11 @@ To install this package, you should have access to registry https://artifacts.ar
 ## Running tests
 
 1. Just run
-    `node PATH/TO/web-wdio-e2e-kit/scripts/run-specs.js --outputDir=pathToDir --configDir=pathToDir`
+    `node PATH/TO/web-wdio-e2e-kit/scripts/run-specs.js --configPath=pathToConfig`
     
     | Parameter | Type | Required | Default | Description |
     | ------ | ------ | ------ | ------ | ------ |
-    | configPath | string | false | <package>/configs/wdio/wdio.conf.js | directory with wdio config |
+    | configPath | string | false | <package>/configs/wdio/wdio.conf.js | path to wdio config |
 
 2. Enjoy
 
