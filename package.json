@@ -31,7 +31,7 @@
         ]
     },
     "dependencies": {
-        "@arrival/web-e2e-spec-creator": "1.0.0-feature-cf-1077-get-project-out-of-e2e-spec-creator",
+        "@arrival/web-e2e-spec-creator": "1.0.0-dev",
         "@eigenspace/argument-parser": "1.0.4",
         "@wdio/cli": "5.14.5",
         "@wdio/local-runner": "5.14.5",

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@arrival/web-e2e-spec-creator@1.0.0-feature-cf-1077-get-project-out-of-e2e-spec-creator":
-  version "1.0.0-feature-cf-1077-get-project-out-of-e2e-spec-creator"
-  resolved "https://artifacts.arrival.services:443/@arrival%2fweb-e2e-spec-creator/-/web-e2e-spec-creator-1.0.0-feature-cf-1077-get-project-out-of-e2e-spec-creator.tgz#23878cba99e33a837d2c5cfb5b8fc6516240cd10"
-  integrity sha512-PsLBHFsYI4QG/KXRh87wRzAkQW8JERllnnnnpwZMz8usMmIGNo8AaodM3/Ipl7rBGhmuYblf0NNfEoR7bo/zrw==
+"@arrival/web-e2e-spec-creator@1.0.0":
+  version "1.0.0-dev"
+  resolved "https://artifacts.arrival.services:443/@arrival%2fweb-e2e-spec-creator/-/web-e2e-spec-creator-1.0.0-dev.tgz#4d9bfd46a7640d8b64a0ade0268ec2e40719dcec"
+  integrity sha512-EnfCXUz/eYUg03TjX0sadqomaU8hvfmATNEaeU22jADsvLFnsoeWHaxPHWL3em3RMIkFIriJLQzAar7765yF/Q==
   dependencies:
     "@eigenspace/helper-scripts" "1.0.79"
 
