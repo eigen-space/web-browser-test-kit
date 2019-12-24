@@ -39,7 +39,7 @@ To install this package, you should have access to registry https://artifacts.ar
 
 # Why do we have that dependencies?
 
-* `@arrival/web-e2e-spec-creator` - used to generate specs.
+* `@cybernated/web-e2e-spec-creator` - used to generate specs.
 * `@eigenspace/argument-parser` - used to parse arguments.
 * `@wdio/local-runner` - used to run tests locally.
 * `@wdio/spec-reporter` - used to report in spec style .
