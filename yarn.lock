@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@arrival/web-e2e-spec-creator@1.0.0":
-  version "1.0.0-dev"
-  resolved "https://artifacts.arrival.services:443/@arrival%2fweb-e2e-spec-creator/-/web-e2e-spec-creator-1.0.0-dev.tgz#4d9bfd46a7640d8b64a0ade0268ec2e40719dcec"
-  integrity sha512-EnfCXUz/eYUg03TjX0sadqomaU8hvfmATNEaeU22jADsvLFnsoeWHaxPHWL3em3RMIkFIriJLQzAar7765yF/Q==
-  dependencies:
-    "@eigenspace/helper-scripts" "1.0.79"
-
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -31,6 +24,13 @@
   integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
   dependencies:
     regenerator-runtime "^0.13.2"
+
+"@cybernated/web-e2e-spec-creator@1.0.0-dev":
+  version "1.0.0-dev"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-e2e-spec-creator/-/web-e2e-spec-creator-1.0.0-dev.tgz#f2b7b0ee54ca2279d9f66a94896dfd0f5da47254"
+  integrity sha512-2hphCMFOG07J0+6rKNdtQ4Wrsf2TSt2HRMU8IFaIkJyfHCKNYt54sgj8X/RXGTGEzdu/fe2ALnQKWUYFCBhvoQ==
+  dependencies:
+    "@eigenspace/helper-scripts" "1.0.79"
 
 "@eigenspace/argument-parser@1.0.2":
   version "1.0.2"

@@ -1,5 +1,5 @@
 // noinspection JSUnusedGlobalSymbols
-import { ActionGenerator } from '@arrival/web-e2e-spec-creator';
+import { ActionGenerator } from '@cybernated/web-e2e-spec-creator';
 
 export class WebDriverIoActionGenerator implements ActionGenerator {
 
