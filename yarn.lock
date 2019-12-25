@@ -67,6 +67,13 @@
     "@eigenspace/argument-parser" "1.0.2"
     npm-exists "1.0.1"
 
+"@eigenspace/helper-scripts@2.0.3-core":
+  version "2.0.3-core"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@eigenspace/helper-scripts/-/helper-scripts-2.0.3-core.tgz#b3f98e5712cf5524659660a5b01b636a9cc128d1"
+  integrity sha512-apts52s4lZSqReQyjDy5a44XwH2M6bGq6fKouegJZnIwYprdeBnwbCYlR7GJH6icYtlJB0jKRTY1E4JskXz7lw==
+  dependencies:
+    "@eigenspace/argument-parser" "1.0.2"
+
 "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"

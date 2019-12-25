@@ -50,7 +50,7 @@
     },
     "devDependencies": {
         "@eigenspace/codestyle": "1.1.67",
-        "@eigenspace/helper-scripts": "1.0.79",
+        "@eigenspace/helper-scripts": "2.0.3-core",
         "eslint": "5.16.0",
         "eslint-plugin-eigenspace-script": "0.0.18",
         "husky": "2.3.0",
