@@ -1,5 +1,4 @@
 const path = require('path');
-import('ts-node/register');
 
 exports.config = {
     runner: 'local',
