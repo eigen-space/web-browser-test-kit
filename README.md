@@ -17,15 +17,15 @@ To install this package, you should have access to registry https://artifacts.ar
 ## Generating specs
 
 1. Add all required folders to tsconfig `include` section:
-```
-...
-"include": [
-    "e2e",
-    "node_modules/@wdio/sync/webdriverio-core.d.ts",
-    "node_modules/@wdio/sync/webdriverio.d.ts",
+    ```
     ...
-]
-```
+    "include": [
+        "e2e",
+        "node_modules/@wdio/sync/webdriverio-core.d.ts",
+        "node_modules/@wdio/sync/webdriverio.d.ts",
+        ...
+    ]
+    ```
 2. Just run
     `node PATH/TO/web-wdio-e2e-kit/scripts/generate-specs.js --outputDir=pathToDir --configDir=pathToDir`
     

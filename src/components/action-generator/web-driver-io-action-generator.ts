@@ -1,10 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
-import { ActionGenerator } from '@cybernated/web-e2e-spec-creator';
+import { ActionGenerator } from '@cybernated/web-browser-spec-creator';
 
 export class WebDriverIoActionGenerator implements ActionGenerator {
 
     openPage(args: { url: string }): string {
-        return `browser.url('${args.url}');`;
+        return `
+            browser.url('${args.url}');
+            browser.setupInterceptor();
+        `;
     };
 
     inputValueBySelector(args: { value: string, targetSelector: string }): string {
@@ -21,6 +24,14 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
                 .map(selector => browser.$(selector))
                 .filter(elem => elem.isExisting())[0]!
                 .click();
+        `;
+    }
+
+    checkRequest(args: { method: string, url: string, bodyPath: string }): string {
+        return `
+            // @ts-ignore
+            expect(SpecsUtils.getRequestBody(browser.getRequests(), '${args.url}', '${args.method}'))
+                .toMatchObject(SpecsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
         `;
     }
 
@@ -52,6 +63,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `
             import * as expect from 'expect';
+            import { SpecsUtils } from '@cybernated/web-wdio-browser-test-kit';
             
             describe('${args.title}', () => {
                 ${args.scenarios}
