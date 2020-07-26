@@ -14,6 +14,7 @@ exports.config = {
     connectionRetryTimeout: 90000,
     connectionRetryCount: 3,
     services: [
+        'intercept',
         'chromedriver',
         [
             'image-comparison',
@@ -31,6 +32,6 @@ exports.config = {
     before: function() {
         require('ts-node').register({ files: true });
         // Set window size
-        browser.setWindowSize(375, 700);
+        browser.setWindowSize(1280, 1024);
     }
 };
