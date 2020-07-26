@@ -35,7 +35,7 @@
         ]
     },
     "dependencies": {
-        "@cybernated/web-browser-spec-creator": "1.0.3-feature-DST-181-specs",
+        "@cybernated/web-browser-test-creator": "1.0.3-feature-DST-181-specs",
         "@eigenspace/argument-parser": "1.0.4",
         "@wdio/cli": "6.3.4",
         "@wdio/local-runner": "6.3.4",

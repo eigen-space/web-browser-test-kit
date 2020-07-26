@@ -10,7 +10,7 @@ This project contains wdio configuration and an adapter that implements an **Act
 
 To install this package, you should have access to registry https://artifacts.arrival.services.
 
-`yarn add --dev @arrival/web-wdio-e2e-kit`
+`yarn add --dev @cybernated/web-wdio-browser-test-kit`
 
 # How to run
 
@@ -39,7 +39,7 @@ To install this package, you should have access to registry https://artifacts.ar
 ## Running tests
 
 1. Just run
-    `node PATH/TO/web-wdio-e2e-kit/scripts/run-specs.js --configPath=pathToConfig`
+    `node PATH/TO/web-wdio-browser-test-kit/scripts/run-specs.js --configPath=pathToConfig`
     
     | Parameter | Type | Required | Default | Description |
     | ------ | ------ | ------ | ------ | ------ |
@@ -49,7 +49,7 @@ To install this package, you should have access to registry https://artifacts.ar
 
 # Why do we have that dependencies?
 
-* `@cybernated/web-e2e-spec-creator` - used to generate specs.
+* `@cybernated/web-browser-test-creator` - used to generate specs in human understandable language.
 * `@eigenspace/argument-parser` - used to parse arguments.
 * `@wdio/local-runner` - used to run tests locally.
 * `@wdio/spec-reporter` - used to report in spec style .
@@ -59,16 +59,21 @@ To install this package, you should have access to registry https://artifacts.ar
 * `chromedriver` - chromium webdriver implementation.
 * `expect` - used as assert library .
 * `ts-node` - used to enable wdio to work with ts files.
-* `tsconfig-paths` - used to resolve ts files .
+* `tsconfig-paths` - used to resolve ts files.
+* `wdio-intercept-service` - gives the ability to extract requests during tests.
 * `wdio-chromedriver-service` - used to run chromedriver via wdio.
 * `wdio-image-comparison-service` - used to make and compare screenshots.
 
 # Why do we have that dev dependencies?
 
+* `@types/*` - contains type definitions for a specific library.
 * `@eigenspace/codestyle` - includes lint rules, config for typescript.
-* `@eigenspace/helper-scripts` - hepls us deploy the package.
+* `@eigenspace/common-types` - includes common types.
+* `@eigenspace/helper-scripts` - helps us deploy the package.
 * `eslint-plugin-eigenspace-script` - Includes set of script linting rules and configuration for them.
 * `typescript` - is a superset of JavaScript that have static type-checking and ECMAScript features.
 * `husky` - used for configure git hooks.
 * `lint-staged` - used for configure linters against staged git files.
 * `eslint` - it checks code for readability, maintainability, and functionality errors.
+* `jest` - spec runner.
+* `ts-jest` - it lets you use Jest to test projects written in TypeScript.
