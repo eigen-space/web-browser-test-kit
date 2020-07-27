@@ -31,7 +31,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
         return `
             // @ts-ignore
             expect(SpecsUtils.getRequestBody(browser.getRequests(), '${args.url}', '${args.method}'))
-                .toMatchObject(SpecsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
+                .toEqual(SpecsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
         `;
     }
 
