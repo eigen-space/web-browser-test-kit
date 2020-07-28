@@ -9,6 +9,9 @@
         ]
     },
     "include": [
-        "src"
+        "src",
+        "node_modules/@wdio/sync/webdriverio-core.d.ts",
+        "node_modules/@wdio/sync/webdriverio.d.ts",
+        "node_modules/wdio-intercept-service/types/wdio-intercept-service.d.ts"
     ]
 }

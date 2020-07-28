@@ -1,4 +1,4 @@
-import { SpecGenerator } from '@cybernated/web-e2e-spec-creator';
+import { SpecGenerator } from '@cybernated/web-browser-test-creator';
 import * as path from 'path';
 import { ArgumentParser } from '@eigenspace/argument-parser';
 import { WebDriverIoActionGenerator } from '..';
