@@ -1,9 +1,10 @@
-import { SpecsUtils } from './specs-utils';
 import { InterceptedRequest } from 'wdio-intercept-service';
+import { AnyDictionary } from '@eigenspace/common-types';
+import { NetworkUtils } from './network-utils';
 
-describe('SpecUtils', () => {
+describe('NetworkUtils', () => {
     const response = { headers: {}, body: {}, statusCode: 200 };
-    const requests: InterceptedRequest[] = [
+    const requests = [
         {
             url: 'http://localhost:3000/invoices/3f991e08-0959-44e0-99c2-efb0dd2fdc7a',
             method: 'GET',
@@ -26,6 +27,11 @@ describe('SpecUtils', () => {
             response
         },
         {
+            method: 'GET',
+            url: 'http://localhost:3000/invoices/1',
+            body: { id: '1' }
+        },
+        {
             url: 'http://localhost:3000/invoices/3f991e08-0959-44e0-99c2-44e0eadsv',
             method: 'POST',
             headers: {
@@ -34,21 +40,28 @@ describe('SpecUtils', () => {
             // Because of Intercepted Request type requirements
             body: undefined as unknown as string,
             response
+        },
+        {
+            method: 'GET',
+            url: 'http://localhost:3000/invoices/1',
+            body: { id: '2' }
         }
-    ];
-
-    describe('#getJsonContent', () => {
-
-        it('should return content of json', () => {
-            const content = SpecsUtils.getJsonContent(`${__dirname}/api-response.json`);
-            expect(content).toEqual({ id: '123' });
-        });
-    });
+    ] as InterceptedRequest[];
 
     describe('#getRequestBody', () => {
 
+        it('should get specified request number', () => {
+            const actual = NetworkUtils.getRequestBody(
+                requests,
+                'http://localhost:3000/invoices/1',
+                'GET',
+                1
+            ) as AnyDictionary;
+            expect(actual.id).toEqual('2');
+        });
+
         it('should find a valid mock POST-request', () => {
-            const actual = SpecsUtils.getRequestBody(
+            const actual = NetworkUtils.getRequestBody(
                 requests,
                 'http://localhost:3000/invoices/3f991e08-0959-44e0-99c2-foldosfdf',
                 'POST'
@@ -57,7 +70,7 @@ describe('SpecUtils', () => {
         });
 
         it('should find a valid non-mock PUT-request', () => {
-            const actual = SpecsUtils.getRequestBody(
+            const actual = NetworkUtils.getRequestBody(
                 requests,
                 'http://localhost:3000/invoices/3f991e08-0959-44e0-99c2-ujolololo',
                 'PUT'
@@ -66,7 +79,7 @@ describe('SpecUtils', () => {
         });
 
         it('should get body from non-mock POST-request', () => {
-            const actual = SpecsUtils.getRequestBody(
+            const actual = NetworkUtils.getRequestBody(
                 requests,
                 'http://localhost:3000/invoices/3f991e08-0959-44e0-99c2-ujolololo',
                 'PUT'
@@ -75,7 +88,7 @@ describe('SpecUtils', () => {
         });
 
         it('should get body from mock POST-request', () => {
-            const actual = SpecsUtils.getRequestBody(
+            const actual = NetworkUtils.getRequestBody(
                 requests,
                 'http://localhost:3000/invoices/3f991e08-0959-44e0-99c2-44e0eadsv',
                 'POST'

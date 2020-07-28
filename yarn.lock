@@ -278,10 +278,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cybernated/web-browser-test-creator@1.0.4-feature-DST-181-specs":
-  version "1.0.4-feature-DST-181-specs"
-  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-browser-test-creator/-/web-browser-test-creator-1.0.4-feature-DST-181-specs.tgz#195c9e41dd6654c44837ed4ff87f6beebfd0f201"
-  integrity sha512-GXdAyO8tcgxKHzISy5DOJSeDrws1WhediWgeMDVwYinSUZiisFizGGyLp4qnzPAV9weBeEitlxvdRmFUW5Be6g==
+"@cybernated/web-browser-test-creator@1.0.4":
+  version "1.0.4"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-browser-test-creator/-/web-browser-test-creator-1.0.4.tgz#e8cf0038ddd9effd1eec6da79f04decb1eb54a8a"
+  integrity sha512-o9s30KHOsk0stzxxpUUPEp7NODRkiC69Lo5DEzDbNqycaPWDPd+k8eOfIcLIfqHNPbNb4/DvgLgOQ58GGw3myA==
   dependencies:
     "@eigenspace/helper-scripts" "2.0.5-core"
 
@@ -581,9 +581,9 @@
     any-observable "^0.3.0"
 
 "@sindresorhus/is@^3.0.0":
-  version "3.1.0"
-  resolved "https://artifacts.core.arrival.co/repository/all-npm/@sindresorhus/is/-/is-3.1.0.tgz#d8735532635bea69ad39119df5f0f10099bd09dc"
-  integrity sha512-n4J+zu52VdY43kdi/XdI9DzuMr1Mur8zFL5ZRG2opCans9aiFwkPxHYFEb5Xgy7n1Z4K6WfI4FpqUqsh3E8BPQ==
+  version "3.0.0"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@sindresorhus/is/-/is-3.0.0.tgz#78fabc5e295adb6e1ef57eaafe4cc5d7aa35b183"
+  integrity sha512-kqA5I6Yun7PBHk8WN9BBP1c7FfN2SrD05GuVSEYPqDb4nerv7HqYfgBfMIKmT/EuejURkJKLZuLyGKGs6WEG9w==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.1"
@@ -735,9 +735,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "14.0.26"
-  resolved "https://artifacts.core.arrival.co/repository/all-npm/@types/node/-/node-14.0.26.tgz#22a3b8a46510da8944b67bfc27df02c34a35331c"
-  integrity sha512-W+fpe5s91FBGE0pEa0lnqGLL4USgpLgs4nokw16SrBBco/gQxuua7KnArSEOd5iaMqbbSHV10vUDkJYJJqpXKA==
+  version "14.0.25"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@types/node/-/node-14.0.25.tgz#7ad8b00a1206d6c9e94810e49f3115f0bcc30456"
+  integrity sha512-okMqUHqrMlGOxfDZliX1yFX5MV6qcd5PpRz96XYtjkM0Ws/hwg23FMUqt6pETrVRZS+EKUB5HY19mmo54EuQbA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
