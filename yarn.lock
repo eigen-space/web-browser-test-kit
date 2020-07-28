@@ -278,10 +278,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cybernated/web-browser-spec-creator@1.0.3-feature-DST-181-specs":
-  version "1.0.3-feature-DST-181-specs"
-  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-browser-spec-creator/-/web-browser-spec-creator-1.0.3-feature-DST-181-specs.tgz#deac60bf8fa600a35f9aa7c1cbe43db24ba1eed7"
-  integrity sha512-epBQifIBcfj6HwDQwLAlZX53swBJA8zLAEPNjGHwPPnvuVryl1QBMbBu6UB1dMrPb6w9gns55VTF7QUUnqhudA==
+"@cybernated/web-browser-test-creator@1.0.4":
+  version "1.0.4"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-browser-test-creator/-/web-browser-test-creator-1.0.4.tgz#e8cf0038ddd9effd1eec6da79f04decb1eb54a8a"
+  integrity sha512-o9s30KHOsk0stzxxpUUPEp7NODRkiC69Lo5DEzDbNqycaPWDPd+k8eOfIcLIfqHNPbNb4/DvgLgOQ58GGw3myA==
   dependencies:
     "@eigenspace/helper-scripts" "2.0.5-core"
 
