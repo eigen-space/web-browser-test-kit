@@ -52,8 +52,8 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     checkRequest(args: { method: string, url: string, bodyPath: string }): string {
         return `
             // @ts-ignore
-            expect(SpecsUtils.getRequestBody(browser.getRequests(), '${args.url}', '${args.method}'))
-                .toEqual(SpecsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
+            expect(NetworkUtils.getRequestBody(browser.getRequests(), '${args.url}', '${args.method}'))
+                .toEqual(FsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
         `;
     }
 
@@ -85,7 +85,8 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `
             import * as expect from 'expect';
-            import { SpecsUtils } from '@cybernated/web-wdio-browser-test-kit';
+            // @ts-ignore
+            import { FsUtils, NetworkUtils } from '@cybernated/web-wdio-browser-test-kit';
             
             describe('${args.title}', () => {
                 ${args.scenarios}
