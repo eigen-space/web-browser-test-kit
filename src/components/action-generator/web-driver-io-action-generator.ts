@@ -11,7 +11,29 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     };
 
     inputValueBySelector(args: { value: string, targetSelector: string }): string {
-        return `browser.$('${args.targetSelector}').setValue('${args.value}');`;
+        // This is a way to trigger input simulated event of React
+        // By default when we just use DOM API or setValue of wdio
+        // ... it just doesn't work.
+
+        // So here we have to get setter of value not from ReactDOM but from default HTML Input element
+        // .. for some reasons using custom setter doesn't trigger React onChange event
+        // When we got it we call this setter for our target input element and after trigger event
+        return `
+            browser.$('${args.targetSelector}').scrollIntoView();
+            browser.execute(
+                item => {
+                    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                        window.HTMLInputElement.prototype,
+                        'value'
+                    )!.set;
+                    nativeInputValueSetter!.call(item, '${args.value}');
+
+                    const event = new Event('input', { bubbles: true });
+                    item.dispatchEvent(event);
+                },
+                browser.$('${args.targetSelector}')
+            );
+        `;
     };
 
     pressOnButtonBySelector(args: { targetSelector: string }): string {
@@ -29,9 +51,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
 
     checkRequest(args: { method: string, url: string, bodyPath: string }): string {
         return `
-            // @ts-ignore
-            expect(NetworkUtils.getRequestBody(browser.getRequests(), '${args.url}', '${args.method}'))
-                .toEqual(FsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
+            expect({ url: '${args.url}', method: '${args.method}' }).toBeRequestWithValidBody();
         `;
     }
 
@@ -62,11 +82,11 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
 
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `
-            import * as expect from 'expect';
-            // @ts-ignore
-            import { FsUtils, NetworkUtils } from '@cybernated/web-wdio-browser-test-kit';
+            import { expect } from '@cybernated/web-wdio-browser-test-kit';
             
             describe('${args.title}', () => {
+                expect.setState({ testPath: __dirname });
+
                 ${args.scenarios}
             });
         `;
