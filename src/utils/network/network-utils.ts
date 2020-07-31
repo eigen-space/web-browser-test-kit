@@ -1,6 +1,6 @@
 import { AnyDictionary } from '@eigenspace/common-types';
 import { InterceptedRequest } from 'wdio-intercept-service';
-import { MockHttpRequestHeaders } from '../../..';
+import { MockHttpRequestHeaders } from '../..';
 
 export class NetworkUtils {
 
@@ -8,10 +8,12 @@ export class NetworkUtils {
         requests: InterceptedRequest[],
         url: string,
         method: string,
-        order = 0
+        order?: number
     ): T | undefined {
         const filteredRequests = NetworkUtils.getRequestList(requests, url, method);
-        return filteredRequests[order] && NetworkUtils.getBody(filteredRequests[order]);
+
+        const orderNumber = !order ? filteredRequests.length - 1 : order;
+        return filteredRequests[orderNumber] && NetworkUtils.getBody(filteredRequests[orderNumber]);
     }
 
     static getRequestList(requests: InterceptedRequest[], url: string, method: string): InterceptedRequest[] {
