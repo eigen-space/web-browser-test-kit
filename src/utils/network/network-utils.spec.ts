@@ -45,6 +45,11 @@ describe('NetworkUtils', () => {
             method: 'GET',
             url: 'http://localhost:3000/invoices/1',
             body: { id: '2' }
+        },
+        {
+            method: 'GET',
+            url: 'http://localhost:3000/invoices/1',
+            body: { id: '3' }
         }
     ] as InterceptedRequest[];
 
@@ -58,6 +63,15 @@ describe('NetworkUtils', () => {
                 1
             ) as AnyDictionary;
             expect(actual.id).toEqual('2');
+        });
+
+        it('should get the last request if order is not specified', () => {
+            const actual = NetworkUtils.getRequestBody(
+                requests,
+                'http://localhost:3000/invoices/1',
+                'GET'
+            ) as AnyDictionary;
+            expect(actual.id).toEqual('3');
         });
 
         it('should find a valid mock POST-request', () => {
