@@ -51,9 +51,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
 
     checkRequest(args: { method: string, url: string, bodyPath: string }): string {
         return `
-            // @ts-ignore
-            expect(NetworkUtils.getRequestBody(browser.getRequests(), '${args.url}', '${args.method}'))
-                .toEqual(FsUtils.getJsonContent(\`\${__dirname}/${args.bodyPath}\`));
+            expect({ url: '${args.url}', method: '${args.method}' }).toBeRequestWithValidBody();
         `;
     }
 
@@ -84,11 +82,11 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
 
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `
-            import * as expect from 'expect';
-            // @ts-ignore
-            import { FsUtils, NetworkUtils } from '@cybernated/web-wdio-browser-test-kit';
+            import { expect } from '@cybernated/web-wdio-browser-test-kit';
             
             describe('${args.title}', () => {
+                expect.setState({ testPath: __dirname });
+
                 ${args.scenarios}
             });
         `;
