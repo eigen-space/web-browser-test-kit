@@ -62,6 +62,8 @@ To install this package, you should have access to registry https://artifacts.ar
 * `tsconfig-paths` - used to resolve ts files.
 * `wdio-intercept-service` - gives the ability to extract requests during tests.
 * `wdio-chromedriver-service` - used to run chromedriver via wdio.
+* `jest-diff` - used for comparing two objects in the results and outputting differences.
+* `jest-image-snapshot` - used for comparing actual and result images and outputting differences.
 * `wdio-image-comparison-service` - used to make and compare screenshots.
 
 # Why do we have that dev dependencies?
