@@ -23,7 +23,7 @@ export function toBeRequestWithValidBody(this: Context, received: Received): Syn
     const snapshotManager = new SnapshotManager(this.testPath);
 
     const requestBody = NetworkUtils.getRequestBody(
-        browser.getRequests(),
+        [],
         received.url,
         received.method,
         received.order
