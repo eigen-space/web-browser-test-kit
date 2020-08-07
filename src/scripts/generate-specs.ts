@@ -7,8 +7,8 @@ const parser = new ArgumentParser();
 const args = parser.get(process.argv.slice(2));
 
 const cwd = process.cwd();
-const outputDir = args.get('outputDir') as string || path.join(cwd, './e2e/specs');
+const outputDir = args.get('outputDir') as string || path.join(cwd, './ui-specs/specs');
 const runner = new SpecGenerator(new WebDriverIoActionGenerator(), outputDir);
 
-const configsPath = args.get('configDir') as string || path.join(cwd, './e2e/configs');
+const configsPath = args.get('configDir') as string || path.join(cwd, './ui-specs/configs');
 runner.run(configsPath);

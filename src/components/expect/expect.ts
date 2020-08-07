@@ -1,17 +1,17 @@
 import * as expect from 'expect';
 import { toBeRequestWithValidBody } from './to-be-request-with-body/to-be-request-with-valid-body';
-import { MatcherState } from '../../types/matcher-state';
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
 interface Matchers<R> {
     toBeRequestWithValidBody(): R;
+    toMatchImageSnapshot(): ReturnType<typeof toMatchImageSnapshot>
 }
 
 interface Expect {
     <T = unknown>(actual: T): Matchers<T>;
-    setState(value: MatcherState): void;
 }
 
-expect.extend({ toBeRequestWithValidBody });
+expect.extend({ toBeRequestWithValidBody, toMatchImageSnapshot });
 
 const expectWithUpdatedType = expect as unknown as Expect;
 
