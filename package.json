@@ -1,5 +1,5 @@
 {
-    "name": "@cybernated/web-wdio-browser-test-kit",
+    "name": "@cybernated/web-browser-test-kit",
     "version": "1.1.5",
     "publishConfig": {
         "registry": "https://artifacts.core.arrival.co/repository/ce-frontend/"
@@ -35,7 +35,7 @@
         ]
     },
     "dependencies": {
-        "@cybernated/web-browser-test-creator": "1.0.6-dev",
+        "@cybernated/web-browser-test-creator": "1.0.8-feature-SC-184-snapshots",
         "@eigenspace/argument-parser": "1.0.4",
         "@wdio/cli": "6.3.4",
         "@wdio/local-runner": "6.3.4",

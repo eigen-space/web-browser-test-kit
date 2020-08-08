@@ -1,7 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 import { ActionGenerator } from '@cybernated/web-browser-test-creator';
 
-export class WebDriverIoActionGenerator implements ActionGenerator {
+export class PuppeteerActionGenerator implements ActionGenerator {
 
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `
@@ -63,6 +63,13 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
             const page = await devtools.newPage();
             await page.setViewport({ width: 1280, height: 1000 });
             await page.goto('${args.url}');
+            await page.setRequestInterception(true);
+
+            const requests: puppeteer.Request[] = [];
+            page.on('request', interceptedRequest => {
+                interceptedRequest.continue();
+                requests.push(interceptedRequest);
+            });
         `;
     };
 
@@ -71,9 +78,13 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
         // By default when we just use DOM API or setValue of wdio
         // ... it just doesn't work.
 
-        // So here we have to get setter of value not from ReactDOM but from default HTML Input element
-        // .. for some reasons using custom setter doesn't trigger React onChange event
+        // 1. So here we have to get setter of value not from ReactDOM but from default HTML Input element
+        // ... for some reasons using custom setter doesn't trigger React onChange event
         // When we got it we call this setter for our target input element and after trigger event
+        //
+        // 2. We aren't able to use any reusable code inside the evaluate callback function here because we
+        // ... lose the all clojure inside so that we can't use any functions here at all,
+        // ... even imported ones.
         return `
             await page.evaluate(
                 () => {
@@ -105,7 +116,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     pressOnButtonBySelector(args: { targetSelector: string }): string {
         return `
            (await page.waitFor(
-                await SemanticElementsSearcher.getSelectorOfExistingElement(page, '${args.targetSelector}') || '',
+                await SemanticElementsSearcher.getSelectorOfExistingElement(page, '${args.targetSelector}'),
                 { visible: true }
            ));
            (await SemanticElementsSearcher.find(page, '${args.targetSelector}'))!.click();
@@ -115,7 +126,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     pressOnElement(args: { data: string }): string {
         return `
             (await page.waitFor(
-                await SemanticElementsSearcher.getSelectorOfExistingElement(page, '${args.data}') || '',
+                await SemanticElementsSearcher.getSelectorOfExistingElement(page, '${args.data}'),
                 { visible: true }
              ));
             await (await SemanticElementsSearcher.find(page, '${args.data}'))!.click();
@@ -124,7 +135,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
 
     checkRequest(args: { method: string, url: string, bodyPath: string }): string {
         return `
-            expect({ url: '${args.url}', method: '${args.method}' }).toBeRequestWithValidBody();
+            expect({ url: '${args.url}', method: '${args.method}', requests }).toBeRequestWithValidBody();
         `;
     }
 
@@ -139,7 +150,7 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     scrollToElement(args: { data: string }): string {
         return `
             (await page.waitFor(
-                await SemanticElementsSearcher.getSelectorOfExistingElement(page, '${args.data}') || '',
+                await SemanticElementsSearcher.getSelectorOfExistingElement(page, '${args.data}'),
                 { visible: true }
             ));
             (await SemanticElementsSearcher.find(page, '${args.data}')).scrollIntoView();
