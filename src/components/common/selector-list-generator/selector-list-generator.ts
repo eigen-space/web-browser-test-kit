@@ -1,4 +1,4 @@
-export class SelectorInjectorUtils {
+export class SelectorListGenerator {
     private static QUERY_SELECTORS = [
         '[placeholder=":selector"]',
         '[title=":selector"]',
@@ -9,17 +9,15 @@ export class SelectorInjectorUtils {
     private static XPATH_SELECTORS = ['//*[text()=":selector"]'];
 
     static getAllSelectors(value: string): string[] {
-        return SelectorInjectorUtils.getAppliedSelectors(
-            [...SelectorInjectorUtils.QUERY_SELECTORS, ...SelectorInjectorUtils.XPATH_SELECTORS],
+        return SelectorListGenerator.getAppliedSelectors(
+            [...SelectorListGenerator.QUERY_SELECTORS, ...SelectorListGenerator.XPATH_SELECTORS],
             value
         );
     }
 
+    // noinspection JSUnusedGlobalSymbols
     static getQuerySelectors(value: string): string[] {
-        return SelectorInjectorUtils.getAppliedSelectors(
-            SelectorInjectorUtils.QUERY_SELECTORS,
-            value
-        );
+        return SelectorListGenerator.getAppliedSelectors(SelectorListGenerator.QUERY_SELECTORS, value);
     }
 
     private static getAppliedSelectors(list: string[], selector: string): string[] {
