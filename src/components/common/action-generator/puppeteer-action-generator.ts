@@ -12,7 +12,7 @@ export class PuppeteerActionGenerator implements ActionGenerator {
                 Browser,
                 Devtools,
                 SemanticElementsSearcher
-            } from '@cybernated/web-wdio-browser-test-kit';
+            } from '@cybernated/web-browser-test-kit';
 
             describe('${args.title}', () => {
                 jest.setTimeout(30000);
