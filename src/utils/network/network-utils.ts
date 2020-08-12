@@ -1,11 +1,11 @@
 import { AnyDictionary } from '@eigenspace/common-types';
-import { InterceptedRequest } from 'wdio-intercept-service';
 import { MockHttpRequestHeaders } from '../..';
+import * as puppeteer from 'puppeteer-core';
 
 export class NetworkUtils {
 
     static getRequestBody<T = AnyDictionary>(
-        requests: InterceptedRequest[],
+        requests: puppeteer.Request[],
         url: string,
         method: string,
         order?: number
@@ -16,25 +16,26 @@ export class NetworkUtils {
         return filteredRequests[orderNumber] && NetworkUtils.getBody(filteredRequests[orderNumber]);
     }
 
-    static getRequestList(requests: InterceptedRequest[], url: string, method: string): InterceptedRequest[] {
+    static getRequestList(requests: puppeteer.Request[], url: string, method: string): puppeteer.Request[] {
         return requests.filter(
             request => {
-                const headers = request.headers as MockHttpRequestHeaders;
+                const headers = request.headers() as unknown as MockHttpRequestHeaders;
                 const isMockMethodEqual = headers && headers['x-mock-method'] === method;
-                const isMethodEqual = request.method === method;
-                const isUrlEqual = request.url === url;
+                const isMethodEqual = request.method() === method;
+                const isUrlEqual = request.url() === url;
 
                 return isUrlEqual && (isMockMethodEqual || isMethodEqual);
             }
         );
     }
 
-    static getBody<T = AnyDictionary>(request: InterceptedRequest): T {
-        const headers = request.headers as MockHttpRequestHeaders;
+    static getBody<T = AnyDictionary>(request: puppeteer.Request): T {
+        const headers = request.headers() as unknown as MockHttpRequestHeaders;
         if (headers && headers['x-mock-body']) {
             return JSON.parse(headers['x-mock-body']);
         }
 
-        return request.body && typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
+        const body = request.postData();
+        return body && JSON.parse(body);
     }
 }
