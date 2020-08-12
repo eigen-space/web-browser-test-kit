@@ -1,7 +1,8 @@
 # About
 
-This project contains wdio configuration and an adapter that implements an **ActionGenerator** interface 
-for generating specifications using the [web-e2e-spec-creator](https://github.com/cybernated/web-e2e-spec-creator) utility
+This project contains the configuration and the adapter that implements an **ActionGenerator** interface 
+for generating specifications using 
+the [web-browser-test-creator](https://github.com/cybernated/web-browser-test-creator) utility.
 
 # Requirements
 
@@ -9,11 +10,21 @@ for generating specifications using the [web-e2e-spec-creator](https://github.co
 
 # Install
 
-To install this package, you should have access to registry https://artifacts.arrival.services.
+To install this package, you should have an access to the registry https://artifacts.arrival.services.
 
-`yarn add --dev @cybernated/web-wdio-browser-test-kit`
+`yarn add --dev @cybernated/web-browser-test-kit`
 
 # How to run
+
+## Setting up a test environment
+
+1. Be sure that the target machine has Docker
+2. Setup Selenoid with
+[the instruction from the official documentation](https://aerokube.com/selenoid/latest/#_option_1_you_have_a_workstation_virtual_machine_or_server). 
+The definition of done is that:
+    1. You can access to `{{host}}:4444` and you get a JSON with browser usage statistics
+    2. You can access to `{{host}}:8080` and see the Selenoid's user interface
+3. If you're a Windows user please disable Firewall
 
 ## Generating specs
 
@@ -21,49 +32,35 @@ To install this package, you should have access to registry https://artifacts.ar
     ```
     ...
     "include": [
-        "e2e",
+        "ui-specs",
         "node_modules/@wdio/sync/webdriverio-core.d.ts",
         "node_modules/@wdio/sync/webdriverio.d.ts",
         ...
     ]
     ```
-2. Just run
+2. Run
     `node PATH/TO/web-wdio-e2e-kit/scripts/generate-specs.js --outputDir=pathToDir --configDir=pathToDir`
     
     | Parameter | Type | Required | Default | Description |
     | ------ | ------ | ------ | ------ | ------ |
-    | outputDir | string | false | <cwd>/e2e/specs | output directory for generating specs |
-    | configDir | string | false | <cwd>/e2e/configs | directory with scenario configs |
-
-3. Enjoy
+    | outputDir | string | false | <cwd>/ui-specs/specs | output directory for generating specs |
+    | configDir | string | false | <cwd>/ui-specs/configs | directory with scenario configs |
 
 ## Running tests
 
-1. Just run
-    `node PATH/TO/web-wdio-browser-test-kit/scripts/run-specs.js --configPath=pathToConfig`
-    
-    | Parameter | Type | Required | Default | Description |
-    | ------ | ------ | ------ | ------ | ------ |
-    | configPath | string | false | <package>/configs/wdio/wdio.conf.js | path to wdio config |
-
-2. Enjoy
-
+Just run `yarn jest`
+   
 # Why do we have that dependencies?
 
 * `@cybernated/web-browser-test-creator` - used to generate specs in human understandable language.
 * `@eigenspace/argument-parser` - used to parse arguments.
-* `@wdio/local-runner` - used to run tests locally.
-* `@wdio/spec-reporter` - used to report in spec style .
-* `@wdio/mocha-framework` - used as moca adapter.
-* `@wdio/sync` - used to enable sync mode of e2e spec.
-* `@wdio/cli` - just wdio cli.
 * `chromedriver` - chromium webdriver implementation.
 * `expect` - used as assert library .
 * `ts-node` - used to enable wdio to work with ts files.
 * `tsconfig-paths` - used to resolve ts files.
-* `wdio-intercept-service` - gives the ability to extract requests during tests.
-* `wdio-chromedriver-service` - used to run chromedriver via wdio.
-* `wdio-image-comparison-service` - used to make and compare screenshots.
+* `webdriverio` - used for Selenoid remote connection.
+* `jest-diff` - used for comparing two objects in the results and outputting differences.
+* `jest-image-snapshot` - used for comparing actual and result images and outputting differences.
 
 # Why do we have that dev dependencies?
 
