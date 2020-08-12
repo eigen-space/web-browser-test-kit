@@ -278,10 +278,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@cybernated/web-browser-test-creator@1.0.9-feature-SC-199-screenshots":
-  version "1.0.9-feature-SC-199-screenshots"
-  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-browser-test-creator/-/web-browser-test-creator-1.0.9-feature-SC-199-screenshots.tgz#4b92e7f2fa6482401799b2b3139ede10ef6f41b3"
-  integrity sha512-BisCfqcH1w6ALIgGr+pLuToOcJM5fTcCJ6e91UweaN8ihMN/hMtgeRoCrN+vRJuLhdELl7Lqr8cSnOeAYnxNUQ==
+"@cybernated/web-browser-test-creator@1.0.10-feature-SC-199-screenshots":
+  version "1.0.10-feature-SC-199-screenshots"
+  resolved "https://artifacts.core.arrival.co/repository/all-npm/@cybernated/web-browser-test-creator/-/web-browser-test-creator-1.0.10-feature-SC-199-screenshots.tgz#fe9fcb9eadae13244aca014664d5224855ca6432"
+  integrity sha512-kWWlp3yjXZ8CiXCxndlGhNdet/H+BuPCuLGWv4Wh1/lN65nLU4vpUuFepzpKRTxeI4KRlITTU+djEe/OkwViiA==
   dependencies:
     "@eigenspace/helper-scripts" "2.0.5-core"
     prettier "2.0.5"
