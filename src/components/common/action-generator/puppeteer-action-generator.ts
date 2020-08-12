@@ -23,7 +23,7 @@ export class PuppeteerActionGenerator implements ActionGenerator {
             
                 beforeAll(async (done) => {
                     browser = await remote({
-                        hostname: ${environment.selenoidHost},
+                        hostname: "${environment.selenoidHost}",
                         path: '/wd/hub',
                         capabilities: {
                             browserName: 'chrome',
