@@ -1,5 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
 import { ActionGenerator } from '@cybernated/web-browser-test-creator';
+import { environment } from '../../../environment/environment';
 
 export class PuppeteerActionGenerator implements ActionGenerator {
 
@@ -22,7 +23,7 @@ export class PuppeteerActionGenerator implements ActionGenerator {
             
                 beforeAll(async (done) => {
                     browser = await remote({
-                        hostname: 'localhost',
+                        hostname: ${environment.selenoidHost},
                         path: '/wd/hub',
                         capabilities: {
                             browserName: 'chrome',
@@ -33,7 +34,7 @@ export class PuppeteerActionGenerator implements ActionGenerator {
                     browser.setWindowSize(1280, 840);
             
                     devtools = await puppeteer.connect(
-                        { browserWSEndpoint: \`ws://localhost:4444/devtools/\${browser.sessionId}\` }
+                        { browserWSEndpoint: \`ws://${environment.selenoidHost}:4444/devtools/\${browser.sessionId}\` }
                     );
             
                     done();
