@@ -18,8 +18,13 @@ To install this package, you should have an access to the registry https://artif
 
 ## Setting up a test environment
 
-The instrument requires the Selenoid server. To set it up please read 
-[the instruction from the official documentation](https://aerokube.com/selenoid/latest/#_option_1_you_have_a_workstation_virtual_machine_or_server).
+1. Be sure that the target machine has Docker
+2. Setup Selenoid with
+[the instruction from the official documentation](https://aerokube.com/selenoid/latest/#_option_1_you_have_a_workstation_virtual_machine_or_server). 
+The definition of done is that:
+    1. You can access to `{{host}}:4444` and you get a JSON with browser usage statistics
+    2. You can access to `{{host}}:8080` and see the Selenoid's user interface
+3. If you're a Windows user please disable Firewall
 
 ## Generating specs
 
