@@ -16,6 +16,7 @@ export class ObjectUtils {
         }
 
         for (const prop in obj1) {
+            // noinspection JSUnfilteredForInLoop
             if (!ObjectUtils.isDeepEqual(obj1[prop], obj2[prop])) {
                 return false;
             }
