@@ -18,8 +18,8 @@
         "lint:markdown": "node ./node_modules/@eigenspace/codestyle/scripts/markdown-lint.js",
         "lint": "yarn lint:code . && yarn lint:markdown",
         "test": "yarn jest",
-        "hooks:pre-push": "yarn lint",
-        "deploy:publish": "node node_modules/@eigenspace/helper-scripts/scripts/ci/publish.js",
+        "hooks:pre-push": "yarn lint && yarn build:package",
+        "deploy:publish": "npx -p @eigenspace/package-publisher@0.0.3 publish",
         "script:update-deps-remote": "npx -p @eigenspace/helper-scripts update-deps"
     },
     "husky": {
@@ -35,7 +35,7 @@
         ]
     },
     "dependencies": {
-        "@cybernated/web-browser-test-creator": "1.0.10-feature-SC-199-screenshots",
+        "@eigenspace/web-browser-test-creator": "1.0.10-feature-SC-199-screenshots",
         "@eigenspace/argument-parser": "1.0.4",
         "chromedriver": "84.0.0",
         "expect": "26.1.0",
