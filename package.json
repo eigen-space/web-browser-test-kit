@@ -31,7 +31,7 @@
     "dependencies": {
         "@eigenspace/web-browser-test-creator": "1.0.10-feature-SC-199-screenshots",
         "@eigenspace/argument-parser": "1.0.4",
-        "chromedriver": "84.0.0",
+        "chromedriver": "119.0.1",
         "expect": "26.1.0",
         "jest-diff": "26.1.0",
         "jest-image-snapshot": "4.1.0",
